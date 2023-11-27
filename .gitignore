@@ -1,0 +1,7 @@
+# Ignore VSCode Settings and Build Artefacts
+.vscode
+build
+
+# Ignore local testing and Mac OS things
+python_tests
+.DS_Store

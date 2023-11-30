@@ -41,6 +41,7 @@ void midi_task(void);
 int main() {
     board_init();
     tusb_init();
+    stdio_init_all();
 
     gpio_init(BUTTON_GPIO_PIN);
     gpio_set_dir(BUTTON_GPIO_PIN, GPIO_IN);
@@ -129,4 +130,6 @@ void led_blinking_task(void) {
 
     board_led_write(led_state);
     led_state = 1 - led_state; // toggle
+
+    printf("Hello, world!");
 }

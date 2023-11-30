@@ -99,7 +99,11 @@ void midi_task(void) {
     static uint32_t start_ms = 0;
     uint8_t msg[3];
 
-    // Send note every 1000ms
+    // Read and discard all MIDI input data
+    uint8_t packet[4];
+    while ( tud_midi_available() ) tud_midi_packet_read(packet);
+
+    // Poll button every 50 ms
     if (board_millis() - start_ms < 50) return; // not enough time
     start_ms += 50;
 
@@ -112,6 +116,7 @@ void midi_task(void) {
         msg[1] = SNARE_MIDI_NOTE;         // Note Number
         msg[2] = 127;                     // Velocity
         tud_midi_n_stream_write(0, 0, msg, 3);
+        printf("Sent Snare Hit\n");
     }
 
     button_last_value = button_current_value;
@@ -130,6 +135,4 @@ void led_blinking_task(void) {
 
     board_led_write(led_state);
     led_state = 1 - led_state; // toggle
-
-    printf("Hello, world!");
 }

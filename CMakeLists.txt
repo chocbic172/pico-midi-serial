@@ -24,5 +24,8 @@ target_link_libraries(${target_proj} pico_stdlib pico_unique_id tinyusb_device t
 
 # Initalise the Pico SDK + add debug files (map, bin, hex)
 pico_sdk_init()
+
+pico_enable_stdio_usb(${target_proj} 0)
 pico_enable_stdio_uart(${target_proj} 1)
+
 pico_add_extra_outputs(${target_proj})

@@ -19,7 +19,7 @@ target_include_directories(${target_proj} PRIVATE ${CMAKE_CURRENT_LIST_DIR})
 
 
 # Link required libraries
-target_link_libraries(${target_proj} pico_stdlib pico_unique_id tinyusb_device tinyusb_board)
+target_link_libraries(${target_proj} pico_stdlib hardware_adc pico_unique_id tinyusb_device tinyusb_board)
 
 
 # Initalise the Pico SDK + add debug files (map, bin, hex)
